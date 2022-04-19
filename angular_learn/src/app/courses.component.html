@@ -1,0 +1,50 @@
+<h1> This is Course template. The name of the course is {{course_name}} </h1>
+        <p> {{test | custompipe:35}} </p>
+        <p>Exercise to implement favourite.</p>
+        <img  height="25 px" width="25 px" [src]="is_favourite? 'assets/svgfiles/star-fill.svg' : 'assets/svgfiles/star.svg'" (click)="Favourite()">
+        <br>
+        <hr>
+        <input [(ngModel)]="previous_data" (keyup)="Rich_format_edit()">
+        <br>
+        <ng-content select=".heading"></ng-content>
+        <ng-content select=".body"></ng-content>
+        <button (click)="loadinstructors()">load instructors</button>
+        <ol>
+            <li *ngFor="let instructor of instructors"> 
+                {{instructor}}
+            </li>
+        </ol>
+        <div *ngFor="let inst of instructors; trackBy: trackInstructors"> 
+            {{"The name of the instructor is "+ inst}} <br>
+            <b> {{inst}} </b>
+         </div>
+         <!-- This is for Event Handling -->
+         <div (click)="Ondiv()">
+         <button class="btn btn-primary" (click)="Onclick($event)">submit </button>
+         </div>
+         <br>
+         <!-- Handling events with $event -->
+         <p>with $event </p>
+         <input (keyup)="onKeyUp_withevent($event)"/>
+         <p>The user is typing is {{xdata}}</p>
+         <br>
+         <hr>
+         <!-- Doing same with template varibles -->
+         <p>With template variables.</p>
+         <input #user_info (keyup)="onKeyup_withtemplatevariable(user_info.value)"/>
+         <p>What user enter is {{user_data_value}}</p>
+         <br>
+         <hr>
+         <!-- Handling events without $event -->
+         <!-- Here we can use keyup.anycharacter -->
+         <p>without $event </p>
+         <input (keyup.enter)="onKeyUp()">
+        <hr>
+         <!-- Two way Binding -->
+         <p>With the Two way Binding</p>
+         <input [(ngModel)]="xdata" (keyup)="onKeyup_two_way_binding()"/>
+         <p>The user is typing {{xdata}}</p>
+         <b>Tweet Exercise </b>
+         <fa-icon [icon]="faheart" style="pointer: cursor" [style.color]=" is_liked? 'red' : '#ccc' " (click)="Tweet()"></fa-icon>
+         <p>{{count}}</p>
+         <input [appInputFormat]="'upper'">

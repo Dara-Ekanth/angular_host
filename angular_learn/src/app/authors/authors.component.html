@@ -1,0 +1,15 @@
+    <h1>Angular</h1>
+    <h2>{{author_names.length}} Authors</h2>
+    <p *ngFor="let author of author_names">
+        {{author}}
+    </p>
+    <button class="btn btn-primary" [class.active]="is_active" [style.backgroundColor]="is_active? 'blue' : 'grey'">save</button>
+
+    <table style="border: 10cm;">
+        <tr>
+            <td attr.colspan="{{colspan_value}}"> column1</td>
+            <td>column2</td>
+        </tr>
+    </table>
+<p>authors works!</p>
+
